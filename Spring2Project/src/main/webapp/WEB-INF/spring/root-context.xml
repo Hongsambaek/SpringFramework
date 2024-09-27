@@ -58,6 +58,10 @@
 		<constructor-arg value="D:\00_JSP_SPRING\02.SPRING2\workspace_spring2\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Spring2Project\resources\upload"/>
 	</bean>
 	
+	<bean id="localPath" class="java.lang.String">
+		<constructor-arg value="D:\upload"></constructor-arg>
+	</bean>
+	
 	<!-- 스프링 AOP 활성화 -->
 	<aop:aspectj-autoproxy/>
 	<context:component-scan base-package="kr.or.ddit.aop"></context:component-scan>

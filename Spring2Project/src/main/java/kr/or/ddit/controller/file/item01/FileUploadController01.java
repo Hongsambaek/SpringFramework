@@ -145,6 +145,9 @@ public class FileUploadController01 {
 	@Resource(name="uploadPath")
 	private String resourcePath;
 	
+	@Resource(name="localPath")
+	private String localPath;
+	
 	@Inject
 	private IItemService itemService;
 	
@@ -294,11 +297,20 @@ public class FileUploadController01 {
 		UUID uuid = UUID.randomUUID();	// UUID로 파일명 생성
 		String createdFileName = uuid.toString() + "_" + originalFilename;
 		
-		File file = new File(resourcePath);
+		// resourcePath 활용
+//		File file = new File(resourcePath);
+//		if(!file.exists()) {
+//			file.mkdirs();
+//		}
+//		File target = new File(resourcePath, createdFileName);	// 파일 업로드 준비
+		
+		// localPath 활용
+		File file = new File(localPath);
 		if(!file.exists()) {
 			file.mkdirs();
 		}
-		File target = new File(resourcePath, createdFileName);	// 파일 업로드 준비
+		File target = new File(localPath, createdFileName);	// 파일 업로드 준비
+		
 		FileCopyUtils.copy(bytes, target); // 파일 복사
 		
 		return createdFileName;
